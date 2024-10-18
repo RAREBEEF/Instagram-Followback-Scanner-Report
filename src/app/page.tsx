@@ -37,13 +37,9 @@ const Home = () => {
         return;
       }
 
-      console.log(e.origin);
-
       const {
         data: { key, data },
       } = e;
-
-      console.log("결과 팝업이 메새지를 수신함:", key);
 
       if (key === "didNotFollowBack") {
         console.table(data);
@@ -136,7 +132,6 @@ const Home = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      console.log("통신 불가");
       setExtensionDisconnected(true);
     }, 3000);
 
