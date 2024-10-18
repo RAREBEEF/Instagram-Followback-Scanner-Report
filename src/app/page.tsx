@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import UserCard from "./components/UserCard";
-import LogoSvg from "@/icons/magnifying-glass-solid.svg";
+import UserCard from "@/components/UserCard";
+import Text from "@/components/language/Text";
 
 const Home = () => {
   const [reportUid, setReportUid] = useState<string | null>(null);
@@ -145,136 +144,80 @@ const Home = () => {
   }, [didNotFollowbackList]);
 
   return (
-    <div className="flex flex-col justify-between items-center min-h-screen p-8 gap-2 font-[family-name:var(--font-geist-sans)]">
-      <header className="text-center w-fit sm:w-full">
-        <h1 id="logo">
-          <div id="logo--icon-wrapper">
-            <Image src={LogoSvg} alt="" id="logo--icon"></Image>
+    <div className=" grow flex flex-col">
+      <h2 className="text-2xl py-4 text-center">SCAN REPORT</h2>
+      <div className="grow flex flex-col justify-center pb-[10%]">
+        {/* 리포트가 준비 완료된 경우 */}
+        {didNotFollowbackWithoutException && reportUid ? (
+          <div className="flex w-full grow flex-col gap-6 items-center">
+            <details className="w-full">
+              <summary className="underline w-fit cursor-pointer">
+                <Text keyword="exceptionList" />
+              </summary>
+              <ul className="flex flex-wrap justify-center gap-5 py-12">
+                {exceptionList && exceptionList.length > 0 ? (
+                  exceptionList.map((user) => (
+                    <UserCard
+                      removeUserFromList={removeUserFromList}
+                      addUserToExceptionList={addUserToExceptionList}
+                      removeUserFromExceptionList={removeUserFromExceptionList}
+                      userData={user}
+                      key={user.uid}
+                      exception={true}
+                    />
+                  ))
+                ) : (
+                  <div className="text-gray-500">
+                    <Text keyword="empty" />
+                  </div>
+                )}
+              </ul>
+            </details>
+            <details className="w-full" open={true}>
+              <summary className="underline w-fit cursor-pointer">
+                <Text keyword="didNotFollowBackList" />
+              </summary>
+              <ul className="flex flex-wrap justify-center gap-5 py-12">
+                {didNotFollowbackWithoutException.length > 0 ? (
+                  didNotFollowbackWithoutException.map((user) => (
+                    <UserCard
+                      removeUserFromList={removeUserFromList}
+                      addUserToExceptionList={addUserToExceptionList}
+                      removeUserFromExceptionList={removeUserFromExceptionList}
+                      userData={user}
+                      key={user.uid}
+                      exception={false}
+                    />
+                  ))
+                ) : (
+                  <div className="text-gray-500">
+                    <Text keyword="empty" />
+                  </div>
+                )}
+              </ul>
+            </details>
           </div>
-          <div id="logo--text">
-            Instagram
-            <br />
-            Followback
-            <br />
-            Scanner
+        ) : // 스캔 기록이 없는 경우
+        didNotFollowbackList ? (
+          <div>
+            <Text keyword="scanFirst" /> <br />
           </div>
-        </h1>
-      </header>
-
-      {/* 리포트가 준비 완료된 경우 */}
-      {didNotFollowbackWithoutException && reportUid ? (
-        <main className="flex w-full grow flex-col gap-6 items-center">
-          <h2 className="text-xl mt-8">SCAN REPORT</h2>
-          <details className="w-full">
-            <summary className="underline w-fit cursor-pointer">
-              EXCEPTION LIST
-            </summary>
-            <ul className="flex flex-wrap justify-center gap-5 py-12">
-              {exceptionList && exceptionList.length > 0 ? (
-                exceptionList.map((user) => (
-                  <UserCard
-                    removeUserFromList={removeUserFromList}
-                    addUserToExceptionList={addUserToExceptionList}
-                    removeUserFromExceptionList={removeUserFromExceptionList}
-                    userData={user}
-                    key={user.uid}
-                    exception={true}
-                  />
-                ))
-              ) : (
-                <div className="text-gray-500">EMPTY</div>
-              )}
-            </ul>
-          </details>
-          <details className="w-full" open={true}>
-            <summary className="underline w-fit cursor-pointer">
-              DID NOT FOLLOW BACK LIST
-            </summary>
-            <ul className="flex flex-wrap justify-center gap-5 py-12">
-              {didNotFollowbackWithoutException.length > 0 ? (
-                didNotFollowbackWithoutException.map((user) => (
-                  <UserCard
-                    removeUserFromList={removeUserFromList}
-                    addUserToExceptionList={addUserToExceptionList}
-                    removeUserFromExceptionList={removeUserFromExceptionList}
-                    userData={user}
-                    key={user.uid}
-                    exception={false}
-                  />
-                ))
-              ) : (
-                <div className="text-gray-500">EMPTY</div>
-              )}
-            </ul>
-          </details>
-        </main>
-      ) : // 스캔 기록이 없는 경우
-      didNotFollowbackList ? (
-        <div>
-          You can check the report after scanning in the extension. <br />
-        </div>
-      ) : (
-        // 로딩 중이거나 연결에 실패한 경우
-        <main className="text-center">
-          {/* TODO: 마켓 링크 연결하기 */}
-          {extensionDisconnected ? (
-            <div>
-              Unable to connect to the extension.
-              <br />
-              Please make sure that the extension is installed.
-            </div>
-          ) : (
-            <div>Loading...</div>
-          )}
-        </main>
-      )}
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://rarebeef.co.kr/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Developer Homepage
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Write a review →
-        </a>
-      </footer>
+        ) : (
+          // 로딩 중이거나 연결에 실패한 경우
+          <main className="text-center">
+            {/* TODO: 마켓 링크 연결하기 */}
+            {extensionDisconnected ? (
+              <div>
+                <Text keyword="unableToConnect" />
+                <br />
+                <Text keyword="checkInstalled" />
+              </div>
+            ) : (
+              <div>Loading ...</div>
+            )}
+          </main>
+        )}
+      </div>
     </div>
   );
 };

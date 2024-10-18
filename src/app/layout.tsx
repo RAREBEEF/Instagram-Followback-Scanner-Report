@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import LanguageProvider from "@/components/language/LanguageProvider";
+import { Fragment } from "react";
+import LayoutHeader from "@/components/Layout/LayoutHeader";
+import LayoutFooter from "@/components/Layout/LayoutFooter";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,11 +32,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body
-        className={`${OrbitRegular.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${OrbitRegular.variable} ${geistSans.variable} ${geistMono.variable} antialiased min-h-screen items-center flex flex-col justify-between font-[family-name:var(--font-geist-sans)]`}
       >
-        {children}
+        <LanguageProvider>
+          <Fragment>
+            <LayoutHeader />
+            <main className="flex flex-col h-full grow my-12">{children}</main>
+            <LayoutFooter />
+          </Fragment>
+        </LanguageProvider>
       </body>
     </html>
   );

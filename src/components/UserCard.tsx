@@ -2,6 +2,7 @@ import MenuIcon from "@/icons/ellipsis-solid.svg";
 import CloseIcon from "@/icons/xmark-solid.svg";
 import Image from "next/image";
 import { Fragment, MouseEvent, useState } from "react";
+import Text from "./language/Text";
 
 const UserCard = ({
   userData: { uid, username, fullName, profileImg },
@@ -119,9 +120,7 @@ const UserCard = ({
                 onClick={removeFromExceptionList}
                 className="bg-[#0095f6] leading-tight max-w-[150px] opacity-100 text-sm rounded-lg px-2 py-1 text-white font-semibold hover:bg-[#1877f2]"
               >
-                Remove from
-                <br />
-                exception list
+                <Text keyword="removeFromException" />
               </button>
             ) : (
               <Fragment>
@@ -129,15 +128,13 @@ const UserCard = ({
                   onClick={addToExceptionList}
                   className="bg-[#0095f6] leading-tight max-w-[150px] opacity-100 text-sm rounded-lg px-2 py-1 text-white font-semibold hover:bg-[#1877f2]"
                 >
-                  Add to
-                  <br />
-                  exception list
+                  <Text keyword="addToException" />
                 </button>
                 <button
                   onClick={removeFromList}
                   className="bg-[#efefef] max-w-[150px] opacity-100 text-sm rounded-lg px-2 py-1 text-black font-semibold hover:bg-[#dbdbdb]"
                 >
-                  Remove from list
+                  <Text keyword="removeFromList" />
                 </button>
               </Fragment>
             )}

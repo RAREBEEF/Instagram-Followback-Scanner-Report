@@ -17,6 +17,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
+  min-width: 320px;
 }
 
 @layer utilities {
@@ -26,11 +27,11 @@ body {
 }
 
 #logo {
-  pointer-events: none;
   user-select: none;
   margin: 12px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 #logo--text {
