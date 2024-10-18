@@ -61,11 +61,14 @@ const Home = () => {
   // 목록 요청하기
   useEffect(() => {
     if (!didNotFollowbackList) {
-      window.postMessage({ key: "requestDidNotFollowBack", data: null }, "*");
+      window.postMessage(
+        { key: "requestDidNotFollowBack", data: null },
+        window.location.origin
+      );
     } else if (!exceptionList && reportUid) {
       window.postMessage(
         { key: "requestExceptionList", data: { uid: reportUid } },
-        "*"
+        window.location.origin
       );
     }
   }, [didNotFollowbackList, exceptionList, reportUid]);
@@ -86,7 +89,7 @@ const Home = () => {
     // 익스텐션에 삭제 요청 보내기
     window.postMessage(
       { key: "requestRemoveUserFromList", data: { target: uid } },
-      "*"
+      window.location.origin
     );
     // 상태 업데이트
     setDidNotFollowbackList((prev) =>
@@ -107,7 +110,7 @@ const Home = () => {
         key: "requestAddUserToExceptionList",
         data: { uid: reportUid, target: targetUserData },
       },
-      "*"
+      window.location.origin
     );
     // 상태 업데이트
     setExceptionList((prev) =>
@@ -123,7 +126,7 @@ const Home = () => {
         key: "requestRemoveUserFromExceptionList",
         data: { uid: reportUid, target: targetUid },
       },
-      "*"
+      window.location.origin
     );
     // 상태 업데이트
     setExceptionList((prev) =>
