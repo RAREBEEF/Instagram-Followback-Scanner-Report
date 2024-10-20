@@ -39,7 +39,9 @@ export default function RootLayout({
         <LanguageProvider>
           <Fragment>
             <LayoutHeader />
-            <main className="flex flex-col h-full grow my-12">{children}</main>
+            <main className="flex flex-col h-full grow my-12 px-8 w-full">
+              {children}
+            </main>
             <LayoutFooter />
           </Fragment>
         </LanguageProvider>

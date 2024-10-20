@@ -27,8 +27,8 @@ const Home = () => {
     fullName: string;
     profileImg: string;
   }> | null>(null);
-  const [extensionDisconnected, setExtensionDisconnected] =
-    useState<boolean>(false);
+  // const [extensionDisconnected, setExtensionDisconnected] =
+  //   useState<boolean>(false);
 
   useEffect(() => {
     const receiveMessage = async (e: MessageEvent) => {
@@ -129,22 +129,22 @@ const Home = () => {
     );
   };
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setExtensionDisconnected(true);
-    }, 3000);
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     setExtensionDisconnected(true);
+  //   }, 3000);
 
-    if (didNotFollowbackList) {
-      clearTimeout(timeout);
-    }
+  //   if (didNotFollowbackList) {
+  //     clearTimeout(timeout);
+  //   }
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [didNotFollowbackList]);
+  //   return () => {
+  //     clearTimeout(timeout);
+  //   };
+  // }, [didNotFollowbackList]);
 
   return (
-    <div className=" grow flex flex-col">
+    <div className=" grow flex flex-col w-full">
       <h2 className="text-2xl py-4 text-center">SCAN REPORT</h2>
       <div className="grow flex flex-col justify-center pb-[10%]">
         {/* 리포트가 준비 완료된 경우 */}
@@ -204,18 +204,19 @@ const Home = () => {
           </div>
         ) : (
           // 로딩 중이거나 연결에 실패한 경우
-          <main className="text-center">
-            {/* TODO: 마켓 링크 연결하기 */}
-            {extensionDisconnected ? (
-              <div>
-                <Text keyword="unableToConnect" />
-                <br />
-                <Text keyword="checkInstalled" />
-              </div>
-            ) : (
-              <div>Loading ...</div>
-            )}
-          </main>
+          // <main className="text-center">
+          //   {/* TODO: 마켓 링크 연결하기 */}
+          //   {extensionDisconnected ? (
+          //     <div>
+          //       <Text keyword="unableToConnect" />
+          //       <br />
+          //       <Text keyword="checkInstalled" />
+          //     </div>
+          //   ) : (
+          //     <div>Loading ...</div>
+          //   )}
+          // </main>
+          <div>Loading ...</div>
         )}
       </div>
     </div>
