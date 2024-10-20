@@ -143,6 +143,13 @@ const Home = () => {
   //   };
   // }, [didNotFollowbackList]);
 
+  const requestBtn = () => {
+    window.postMessage(
+      { key: "requestDidNotFollowBack", data: null },
+      window.location.origin
+    );
+  };
+
   return (
     <div className=" grow flex flex-col w-full">
       <h2 className="text-2xl py-4 text-center">SCAN REPORT</h2>
@@ -216,7 +223,9 @@ const Home = () => {
           //     <div>Loading ...</div>
           //   )}
           // </main>
-          <div>Loading ...</div>
+          <div>
+            Loading ... <button onClick={requestBtn}>데이터 요청</button>
+          </div>
         )}
       </div>
     </div>
