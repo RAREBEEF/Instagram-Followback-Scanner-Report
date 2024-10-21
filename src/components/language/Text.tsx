@@ -75,8 +75,12 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "Go to the profile page of the scan target",
   },
   moveToTargetDesc: {
-    ko: "스캔 대상의 프로필 페이지로 이동",
+    ko: "스캔 대상의 프로필 페이지로 이동해주세요.",
     en: "Go to the profile page of the user you want to scan the follow list.",
+  },
+  exampleOfProfilePage: {
+    ko: "(프로필 페이지 예시)",
+    en: "(Profile page example)",
   },
   ifSameAccount: {
     ko: "로그인한 계정과 대상 계정이 동일한 경우",
@@ -87,8 +91,8 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "Proceed to the next step",
   },
   ifDifferentAccount: {
-    ko: "로그인한 계정과 대상 계정이 다른 경우",
-    en: "If the signed in account and target account are different",
+    ko: "로그인한 계정과 스캔할 계정이 다른 경우",
+    en: "If the signed in account is different from the account to be scanned",
   },
   mayFail: {
     ko: "아래의 경우 스캔에 실패할 수 있습니다.",
@@ -102,9 +106,9 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     ko: "로그인한 계정이 대상 계정을 팔로우하지 않는 경우",
     en: "The signed in account does not follow the target account",
   },
-  checkFrequently5: {
-    ko: "자주 묻는 질문 5번 참고",
-    en: "Refer to Frequently Asked Questions No. 5",
+  checkFrequently1: {
+    ko: "자주 묻는 질문 1번 참고",
+    en: "Refer to Frequently Asked Questions No. 1",
   },
   scanningAtExtension: {
     ko: "확장프로그램에서 스캔 실행하기",
@@ -155,7 +159,7 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "If the scan target is a private account, an empty list will be output.",
   },
   userNotFound: {
-    ko: "유저를 찾는데 실패했다는 오류가 계속 발생하는 경우",
+    ko: "유저를 찾는데 실패했다는 오류가 발생하는 경우",
     en: "If an error continues to occur saying that it failed to find the user",
   },
   checkSignIn: {
@@ -163,7 +167,7 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "Please make sure you are signed in to Instagram.",
   },
   checkOpenPage: {
-    ko: "인스타그램에 로그인되었는지 확인해 주세요.",
+    ko: "스캔 대상의 프로필 페이지가 열려있는 상태에서 스캔했는지 확인해 주세요.",
     en: "Make sure you run the scan while the profile page of the account you want to scan is open.",
   },
   retryAfterFollow: {
@@ -181,6 +185,30 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
   inquireToMe: {
     ko: "문제가 지속될 경우 스토어에 문의를 남겨 주세요.",
     en: "If the problem persists, please write an inquiry to the store.",
+  },
+  reload: {
+    ko: "재시도",
+    en: "retry",
+  },
+  goToProfilePage: {
+    ko: "프로필 페이지로 이동하라는 메세지가 출력되는 경우",
+    en: "If a message asking you to go to the profile page is displayed",
+  },
+  scanningAtTargetPage: {
+    ko: "스캔 대상의 프로필 페이지에서 스캔을 실행해 주세요.",
+    en: "Please run the scan from the profile page of the scan target.",
+  },
+  needToSignInInstagram: {
+    ko: "인스타그램에 로그인하라는 메세지가 출력되는 경우",
+    en: "If a message asking you to log in to Instagram is displayed",
+  },
+  scanFailed: {
+    ko: "팔로우 목록을 스캔하는데 실패했다는 메세지가 출력되는 경우",
+    en: "If a message is displayed saying that scanning the follow list failed,",
+  },
+  refreshAndRetry: {
+    ko: "인스타그램 창을 새로고친 뒤 시간적 여유를 두고 다시 시도해 주세요.",
+    en: "Please refresh the Instagram window and try again after some time.",
   },
 };
 

@@ -3,16 +3,18 @@
 import { LanguageContext } from "@/components/language/LanguageProvider";
 import Text from "@/components/language/Text";
 import { useContext } from "react";
+// import profilePageExampleImg from "@/images/profile-page-example.png";
+// import Image from "next/image";
 
 const TutorialPage = () => {
   const { lang } = useContext(LanguageContext);
   return (
-    <div className="grow flex flex-col">
-      <h2 className="text-2xl py-4 text-center">TUTORIAL</h2>
+    <div className="grow flex flex-col break-keep">
+      <h2 className="text-2xl pt-4 pb-8 text-center">TUTORIAL</h2>
       {lang && (
         <div className="grow flex flex-col justify-start max-w-[1024px] w-full m-auto sm:px-12 p-4">
           <ol>
-            <li className="p-4">
+            <li className="p-8">
               <h3 className="text-xl font-semibold">
                 1. <Text keyword="signInToInstagram" />
               </h3>
@@ -33,36 +35,43 @@ const TutorialPage = () => {
               </div>
             </li>
 
-            <li className="p-4">
+            <li className="p-8">
               <h3 className="text-xl font-semibold">
                 2. <Text keyword="moveToTarget" />
               </h3>
               <div className="text-base break-keep pl-5">
-                <Text keyword="moveToTargetDesc" />
+                <Text keyword="moveToTargetDesc" />{" "}
+                <a
+                  className="underline"
+                  href="https://instagram.com/instagram"
+                  target="_blank"
+                >
+                  <Text keyword="exampleOfProfilePage" />
+                </a>
               </div>
               <ol className="pl-5">
-                <li className="py-4">
+                {/* <li className="py-4">
                   <h4 className="text-lg font-semibold">
                     2-1. <Text keyword="ifSameAccount" />
                   </h4>
                   <div className="text-base break-keep pl-10">
                     <Text keyword="nextStep" />
                   </div>
-                </li>
-                <li>
+                </li> */}
+                <li className="py-4">
                   <h4 className="text-lg font-semibold">
-                    2-2. <Text keyword="ifDifferentAccount" />
+                    !! <Text keyword="ifDifferentAccount" />
                   </h4>
-                  <div className="text-base break-keep pl-10">
+                  <div className="text-base break-keep pl-5">
                     <Text keyword="mayFail" />
                   </div>
-                  <div className="text-base break-keep pl-10">
+                  <div className="text-base break-keep pl-5">
                     1. <Text keyword="ifPrivateAccount" />
                   </div>
-                  <div className="text-base break-keep pl-10">
+                  <div className="text-base break-keep pl-5">
                     2. <Text keyword="ifNotFollowing" /> (
                     <a href="#failed-to-find-user" className="underline">
-                      <Text keyword="checkFrequently5" />
+                      <Text keyword="checkFrequently1" />
                     </a>
                     )
                   </div>
@@ -70,7 +79,7 @@ const TutorialPage = () => {
               </ol>
             </li>
 
-            <li className="p-4">
+            <li className="p-8">
               <h3 className="text-xl font-semibold">
                 3. <Text keyword="scanningAtExtension" />
               </h3>
@@ -81,64 +90,29 @@ const TutorialPage = () => {
               <div className="text-base break-keep pl-5">
                 <Text keyword="waitForScanning" />
               </div>
+              <br />
+              <div className="text-base break-keep pl-5">
+                <Text keyword="scanningNeverEndDesc" />
+              </div>
             </li>
           </ol>
 
-          <div className="p-4 pt-12">
+          <div className="p-4 pt-16">
             <h3 className="text-xl font-semibold">
               <Text keyword="frequentlyAsk" />
             </h3>
             <ol className="pl-5">
-              <li className="py-4">
-                <h4 className="text-lg font-semibold">
-                  1. <Text keyword="reportNotShowing" />
-                </h4>
-                <div className="text-base break-keep pl-10">
-                  <Text keyword="reportNotShowingDesc" />
-                  <a href="https://ifs.rarebeef.co.kr/" target="_blank">
-                    https://ifs.rarebeef.co.kr/
-                  </a>
-                </div>
-              </li>
-
-              <li className="py-4">
-                <h4 className="text-lg font-semibold">
-                  2. <Text keyword="scanningNeverEnd" />
-                </h4>
-                <div className="text-base break-keep pl-10">
-                  <Text keyword="scanningNeverEndDesc" />
-                </div>
-              </li>
-
-              <li className="py-4">
-                <h4 className="text-lg font-semibold">
-                  3. <Text keyword="figureNotMatch" />
-                </h4>
-                <div className="text-base break-keep pl-10">
-                  <Text keyword="figureNotMatchDesc" />
-                </div>
-              </li>
-
-              <li className="py-4">
-                <h4 className="text-lg font-semibold">
-                  4. <Text keyword="emptyList" />
-                </h4>
-                <div className="text-base break-keep pl-10">
-                  <Text keyword="emptyListDesc" />
-                </div>
-              </li>
-
               <li id="failed-to-find-user" className="py-4">
                 <h4 className="text-lg font-semibold">
-                  5. <Text keyword="userNotFound" />
+                  1. <Text keyword="userNotFound" />
                 </h4>
-                <div className="text-base break-keep pl-10">
+                <div className="text-base break-keep pl-5">
                   1. <Text keyword="checkSignIn" />
                 </div>
-                <div className="text-base break-keep pl-10">
+                <div className="text-base break-keep pl-5">
                   2. <Text keyword="checkOpenPage" />
                 </div>
-                <div className="text-base break-keep pl-10">
+                <div className="text-base break-keep pl-5">
                   3. <Text keyword="retryAfterFollow" />
                 </div>
                 <br />
@@ -149,6 +123,99 @@ const TutorialPage = () => {
                       <Text keyword="reasonForFollowDesc" />
                     </div>
                   </div>
+                </div>
+              </li>
+
+              <li className="py-4">
+                <h4 className="text-lg font-semibold">
+                  2. <Text keyword="goToProfilePage" />
+                </h4>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="scanningAtTargetPage" />{" "}
+                  <a
+                    className="underline"
+                    href="https://instagram.com/instagram"
+                    target="_blank"
+                  >
+                    <Text keyword="exampleOfProfilePage" />
+                  </a>
+                </div>
+              </li>
+
+              <li className="py-4">
+                <h4 className="text-lg font-semibold">
+                  3. <Text keyword="needToSignInInstagram" />
+                </h4>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="signInToInstagramDesc" />
+                </div>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="notNecessarySameAccount" />
+                </div>
+                <br />
+                <div className="border py-4 rounded w-fit mx-5 my-0 p-5">
+                  <div className="break-keep italic text-sm">
+                    <Text keyword="doNotCollectPersonalInformation" />
+                  </div>
+                  <div className="break-keep italic text-sm">
+                    (<Text keyword="reasonForSignIn" />)
+                  </div>
+                </div>
+              </li>
+
+              <li className="py-4">
+                <h4 className="text-lg font-semibold">
+                  4. <Text keyword="scanFailed" />
+                </h4>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="refreshAndRetry" />
+                </div>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="inquireToMe" />
+                </div>
+              </li>
+
+              <li className="py-4">
+                <h4 className="text-lg font-semibold">
+                  5. <Text keyword="reportNotShowing" />
+                </h4>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="reportNotShowingDesc" />
+                  <a
+                    href="https://ifs.rarebeef.co.kr/"
+                    target="_blank"
+                    className="underline"
+                  >
+                    <br />
+                    https://ifs.rarebeef.co.kr/
+                  </a>
+                </div>
+              </li>
+
+              <li className="py-4">
+                <h4 className="text-lg font-semibold">
+                  6. <Text keyword="scanningNeverEnd" />
+                </h4>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="scanningNeverEndDesc" />
+                </div>
+              </li>
+
+              <li className="py-4">
+                <h4 className="text-lg font-semibold">
+                  3. <Text keyword="figureNotMatch" />
+                </h4>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="figureNotMatchDesc" />
+                </div>
+              </li>
+
+              <li className="py-4">
+                <h4 className="text-lg font-semibold">
+                  7. <Text keyword="emptyList" />
+                </h4>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="emptyListDesc" />
                 </div>
               </li>
             </ol>

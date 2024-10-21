@@ -1,10 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import UserCard from "@/components/UserCard";
 import Text from "@/components/language/Text";
+import spinnerIcon from "@/icons/spinner-solid.svg";
+import Image from "next/image";
 
 const Home = () => {
+  const [waitForExtension, setWaitForExtension] = useState<boolean>(false);
+  const [showReloadBtn, setShowReloadBtn] = useState<boolean>(false);
+  const [startExpiredTimer, setStartExpiredTimer] = useState<boolean>(false);
+  const [expired, setExpired] = useState<boolean>(false);
   const [reportUid, setReportUid] = useState<string | null>(null);
   const [didNotFollowbackList, setDidNotFollowbackList] = useState<Array<{
     uid: string;
@@ -27,9 +33,18 @@ const Home = () => {
     fullName: string;
     profileImg: string;
   }> | null>(null);
-  // const [extensionDisconnected, setExtensionDisconnected] =
-  //   useState<boolean>(false);
 
+  useEffect(() => {
+    const waitForExtension = setTimeout(() => {
+      setWaitForExtension(true);
+    }, 1000);
+
+    return () => {
+      clearTimeout(waitForExtension);
+    };
+  }, []);
+
+  // 메세지 핸들러
   useEffect(() => {
     const receiveMessage = async (e: MessageEvent) => {
       if (e.origin !== window.location.origin) {
@@ -55,6 +70,8 @@ const Home = () => {
 
   // 목록 요청하기
   useEffect(() => {
+    if (!waitForExtension) return;
+
     if (!didNotFollowbackList) {
       window.postMessage(
         { key: "requestDidNotFollowBack", data: null },
@@ -66,9 +83,9 @@ const Home = () => {
         window.location.origin
       );
     }
-  }, [didNotFollowbackList, exceptionList, reportUid]);
+  }, [waitForExtension, didNotFollowbackList, exceptionList, reportUid]);
 
-  // 맞팔 안한 유저 목록에서 예외인 유저 제거
+  // 모든 목록을 받아온 후, 맞팔 목록에서 예외 유저를 빼고 상태에 저장
   useEffect(() => {
     if (!didNotFollowbackList || !exceptionList) return;
 
@@ -129,31 +146,43 @@ const Home = () => {
     );
   };
 
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     setExtensionDisconnected(true);
-  //   }, 3000);
+  useEffect(() => {
+    const reloadTimer = setTimeout(() => {
+      setShowReloadBtn(true);
+    }, 5000);
 
-  //   if (didNotFollowbackList) {
-  //     clearTimeout(timeout);
-  //   }
+    return () => {
+      clearTimeout(reloadTimer);
+    };
+  }, []);
 
-  //   return () => {
-  //     clearTimeout(timeout);
-  //   };
-  // }, [didNotFollowbackList]);
-
-  const requestBtn = () => {
+  // 리로드 버튼(익스텐션이 로드되기 전에 전송되어 요청이 씹혔을 때 재요청하기 위함)
+  const onReload = () => {
+    setWaitForExtension(true);
     window.postMessage(
       { key: "requestDidNotFollowBack", data: null },
       window.location.origin
     );
+    setShowReloadBtn(false);
+    setStartExpiredTimer(true);
   };
+
+  useEffect(() => {
+    if (!startExpiredTimer) return;
+
+    const expiredTimer = setTimeout(() => {
+      setExpired(true);
+    }, 5000);
+
+    return () => {
+      clearTimeout(expiredTimer);
+    };
+  }, [startExpiredTimer]);
 
   return (
     <div className=" grow flex flex-col w-full">
-      <h2 className="text-2xl py-4 text-center">SCAN REPORT</h2>
-      <div className="grow flex flex-col justify-center pb-[10%]">
+      <h2 className="text-2xl pt-4 pb-8 text-center">SCAN REPORT</h2>
+      <div className="grow flex flex-col justify-center">
         {/* 리포트가 준비 완료된 경우 */}
         {didNotFollowbackWithoutException && reportUid ? (
           <div className="flex w-full grow flex-col gap-6 items-center">
@@ -210,21 +239,28 @@ const Home = () => {
             <Text keyword="scanFirst" /> <br />
           </div>
         ) : (
-          // 로딩 중이거나 연결에 실패한 경우
-          // <main className="text-center">
-          //   {/* TODO: 마켓 링크 연결하기 */}
-          //   {extensionDisconnected ? (
-          //     <div>
-          //       <Text keyword="unableToConnect" />
-          //       <br />
-          //       <Text keyword="checkInstalled" />
-          //     </div>
-          //   ) : (
-          //     <div>Loading ...</div>
-          //   )}
-          // </main>
-          <div>
-            Loading ... <button onClick={requestBtn}>데이터 요청</button>
+          <div className="grow flex flex-col gap-8 justify-center items-center">
+            {expired ? (
+              <div>
+                <Text keyword="unableToConnect" />
+                <br />
+                <Text keyword="checkInstalled" />
+              </div>
+            ) : (
+              <Fragment>
+                <div className="w-[30%] animate-spin opacity-50 select-none max-w-[300px]">
+                  <Image src={spinnerIcon} alt="loading..." />
+                </div>
+                <button
+                  onClick={onReload}
+                  className={`underline text-[gray] ${
+                    showReloadBtn ? "visible" : "invisible"
+                  }`}
+                >
+                  <Text keyword="reload" />
+                </button>
+              </Fragment>
+            )}
           </div>
         )}
       </div>
