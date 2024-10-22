@@ -68,21 +68,21 @@ const UserCard = ({
       <a
         href={`https://instagram.com/${username}`}
         target="_blank"
-        className="relative block"
+        className="relative xs:block flex items-center"
       >
         <Image
-          className="rounded-full overflow-hidden m-[25px]"
+          className="rounded-full shrink-0 overflow-hidden xs:m-[25px] m-[12px] xs:w-[100px] xs:h-[100px]"
           src={profileImg}
           width={100}
           height={100}
           alt={`${username}'s profile image.`}
         />
-        <div className="w-[150px] mt-2 h-[50px] flex flex-col">
+        <div className="xs:w-[150px] xs:mt-2 m-auto h-[50px] flex flex-col">
           <div className="text-center break-keep">
-            <div className="font-semibold overflow-hidden text-ellipsis whitespace-nowrap">
+            <div className="font-semibold overflow-hidden text-ellipsis xs:whitespace-nowrap">
               {username}
             </div>
-            <div className="font-semibold text-sm text-gray-500 overflow-hidden text-ellipsis whitespace-nowrap">
+            <div className="font-semibold text-sm text-gray-500 overflow-hidden text-ellipsis xs:whitespace-nowrap">
               {fullName}
             </div>
           </div>
@@ -90,15 +90,15 @@ const UserCard = ({
       </a>
 
       <div
-        className={`absolute w-full h-full m-auto right-0 left-0 transition-all  ${
+        className={`absolute w-full h-full m-auto right-0 left-0 transition-all xs:pr-0  ${
           showMenu ? "bottom-0" : "bottom-[100%]"
         }`}
       >
         <div className="w-full z-10 h-full absolute top-0 left-0 bg-[white] "></div>
 
-        <div className="flex z-20 flex-col pt-12 m-auto h-full w-full justify-center items-center">
+        <div className="flex z-20 xs:flex-col p-1 xs:p-0 xs:pt-12 m-auto h-full w-full xs:justify-center justify-between items-center">
           <a
-            className="z-20 flex items-center gap-2 max-w-[150px]"
+            className="z-20 flex flex-col xs:flex-row xs:w-auto min-w-[150px] items-center gap-2 px-2 xs:px-0 xs:max-w-[150px]"
             href={`https://instagram.com/${username}`}
             target="_blank"
           >
@@ -109,16 +109,16 @@ const UserCard = ({
               height={30}
               alt={`${username}'s profile image.`}
             />
-            <div className="font-semibold overflow-hidden text-ellipsis whitespace-nowrap">
+            <div className="font-semibold xs:w-full break-all text-center text-balance overflow-hidden xs:text-ellipsis xs:whitespace-nowrap">
               {username}
             </div>
           </a>
 
-          <div className="relative z-20 flex flex-col gap-2 w-full h-full items-center justify-center">
+          <div className="relative z-20 flex flex-col gap-2 w-full h-full items-center justify-center break-keep">
             {exception ? (
               <button
                 onClick={removeFromExceptionList}
-                className="bg-[#0095f6] leading-tight max-w-[150px] opacity-100 text-sm rounded-lg px-2 py-1 text-white font-semibold hover:bg-[#1877f2]"
+                className="bg-[#0095f6] leading-tight max-w-[150px] opacity-100 text-sm rounded-lg p-2 text-white font-semibold hover:bg-[#1877f2]"
               >
                 <Text keyword="removeFromException" />
               </button>
@@ -126,13 +126,13 @@ const UserCard = ({
               <Fragment>
                 <button
                   onClick={addToExceptionList}
-                  className="bg-[#0095f6] leading-tight max-w-[150px] opacity-100 text-sm rounded-lg px-2 py-1 text-white font-semibold hover:bg-[#1877f2]"
+                  className="bg-[#0095f6] leading-tight max-w-[150px] opacity-100 text-sm rounded-lg p-2 text-white font-semibold hover:bg-[#1877f2]"
                 >
                   <Text keyword="addToException" />
                 </button>
                 <button
                   onClick={removeFromList}
-                  className="bg-[#efefef] max-w-[150px] opacity-100 text-sm rounded-lg px-2 py-1 text-black font-semibold hover:bg-[#dbdbdb]"
+                  className="bg-[#efefef] max-w-[150px] opacity-100 text-sm rounded-lg p-2 text-black font-semibold hover:bg-[#dbdbdb]"
                 >
                   <Text keyword="removeFromList" />
                 </button>

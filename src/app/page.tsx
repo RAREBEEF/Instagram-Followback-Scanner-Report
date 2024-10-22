@@ -186,11 +186,12 @@ const Home = () => {
         {/* 리포트가 준비 완료된 경우 */}
         {didNotFollowbackWithoutException && reportUid ? (
           <div className="flex w-full grow flex-col gap-6 items-center">
+            {/* 예외 목록 */}
             <details className="w-full">
-              <summary className="underline w-fit cursor-pointer">
+              <summary className="w-fit cursor-pointer">
                 <Text keyword="exceptionList" />
               </summary>
-              <ul className="flex flex-wrap justify-center gap-5 py-12">
+              <ul className="py-12 flex flex-col xs:grid xs:grid-cols-[repeat(auto-fit,_182px)] gap-4 justify-center">
                 {exceptionList && exceptionList.length > 0 ? (
                   exceptionList.map((user) => (
                     <UserCard
@@ -209,11 +210,12 @@ const Home = () => {
                 )}
               </ul>
             </details>
+            {/* 맞팔 안한 목록 */}
             <details className="w-full" open={true}>
-              <summary className="underline w-fit cursor-pointer">
+              <summary className="w-fit cursor-pointer">
                 <Text keyword="didNotFollowBackList" />
               </summary>
-              <ul className="flex flex-wrap justify-center gap-5 py-12">
+              <ul className="py-12 flex flex-col xs:grid xs:grid-cols-[repeat(auto-fit,_182px)] gap-4 justify-center">
                 {didNotFollowbackWithoutException.length > 0 ? (
                   didNotFollowbackWithoutException.map((user) => (
                     <UserCard
@@ -226,7 +228,7 @@ const Home = () => {
                     />
                   ))
                 ) : (
-                  <div className="text-gray-500">
+                  <div className="text-gray-500 flex items-center justify-center h-[150px]">
                     <Text keyword="empty" />
                   </div>
                 )}
@@ -239,6 +241,7 @@ const Home = () => {
             <Text keyword="scanFirst" /> <br />
           </div>
         ) : (
+          // 로딩 중 혹은 만료
           <div className="grow flex flex-col gap-8 justify-center items-center">
             {expired ? (
               <div>

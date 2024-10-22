@@ -33,6 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1836657352810397"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
       <body
         className={`${OrbitRegular.variable} ${geistSans.variable} ${geistMono.variable} antialiased min-h-screen items-center flex flex-col justify-between font-[family-name:var(--font-geist-sans)]`}
       >

@@ -17,7 +17,15 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  min-width: 320px;
+  min-width: 400px;
+}
+
+summary::-webkit-details-marker {
+  /* Safari 브라우저용 사용자 정의 스타일 */
+  color: darkgray;
+}
+summary::marker {
+  color: darkgray;
 }
 
 @layer utilities {
