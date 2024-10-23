@@ -24,15 +24,15 @@ const Home = () => {
     fullName: string;
     profileImg: string;
   }> | null>(null);
-  const [
-    didNotFollowbackWithoutException,
-    setDidNotFollowbackWithoutException,
-  ] = useState<Array<{
-    uid: string;
-    username: string;
-    fullName: string;
-    profileImg: string;
-  }> | null>(null);
+  // const [
+  //   didNotFollowbackWithoutException,
+  //   setDidNotFollowbackWithoutException,
+  // ] = useState<Array<{
+  //   uid: string;
+  //   username: string;
+  //   fullName: string;
+  //   profileImg: string;
+  // }> | null>(null);
 
   useEffect(() => {
     const waitForExtension = setTimeout(() => {
@@ -85,16 +85,16 @@ const Home = () => {
     }
   }, [waitForExtension, didNotFollowbackList, exceptionList, reportUid]);
 
-  // 모든 목록을 받아온 후, 맞팔 목록에서 예외 유저를 빼고 상태에 저장
-  useEffect(() => {
-    if (!didNotFollowbackList || !exceptionList) return;
+  // // 모든 목록을 받아온 후, 맞팔 목록에서 예외 유저를 빼고 상태에 저장
+  // useEffect(() => {
+  //   if (!didNotFollowbackList || !exceptionList) return;
 
-    const withoutException = didNotFollowbackList.filter(
-      (user) => !exceptionList.some((exception) => user.uid === exception.uid)
-    );
+  //   const withoutException = didNotFollowbackList.filter(
+  //     (user) => !exceptionList.some((exception) => user.uid === exception.uid)
+  //   );
 
-    setDidNotFollowbackWithoutException(withoutException);
-  }, [didNotFollowbackList, exceptionList]);
+  //   setDidNotFollowbackWithoutException(withoutException);
+  // }, [didNotFollowbackList, exceptionList]);
 
   // 맞팔 안한 목록에서 유저 삭제
   const removeUserFromList = (uid: string) => {
@@ -124,7 +124,19 @@ const Home = () => {
       },
       window.location.origin
     );
-    // 상태 업데이트
+    // 맞팔 안한 유저 상태에서 대상 유저 삭제
+    setDidNotFollowbackList((prev) => {
+      if (!prev) return [];
+
+      const targetIndex = prev.findIndex(
+        ({ uid }) => uid === targetUserData.uid
+      );
+
+      prev.splice(targetIndex, 1);
+
+      return prev;
+    });
+    // 예외 목록 상태에 대상 유저 추가
     setExceptionList((prev) =>
       prev ? [targetUserData, ...prev] : [targetUserData]
     );
@@ -140,10 +152,34 @@ const Home = () => {
       },
       window.location.origin
     );
-    // 상태 업데이트
-    setExceptionList((prev) =>
-      prev ? prev.filter((user) => user.uid !== targetUid) : null
-    );
+
+    let targetUserData:
+      | {
+          uid: string;
+          username: string;
+          fullName: string;
+          profileImg: string;
+        }
+      | null
+      | undefined = null;
+
+    // 예외 목록 상태에서 대상 유저 삭제
+    setExceptionList((prev) => {
+      if (!prev) return [];
+
+      const targetIndex = prev.findIndex(({ uid }) => uid === targetUid);
+
+      targetUserData = prev.splice(targetIndex, 1)[0];
+
+      return prev;
+    });
+
+    // 맞팔 안한 유저 상태에 대상 유저 추가
+    setDidNotFollowbackList((prev) => {
+      if (!targetUserData) return prev;
+      if (!prev) return [targetUserData];
+      return [targetUserData, ...prev];
+    });
   };
 
   useEffect(() => {
@@ -179,12 +215,19 @@ const Home = () => {
     };
   }, [startExpiredTimer]);
 
+  useEffect(() => {
+    console.log("전체 목록");
+    console.table(didNotFollowbackList);
+    console.log("예외 목록");
+    console.table(exceptionList);
+  }, [didNotFollowbackList, exceptionList]);
+
   return (
     <div className=" grow flex flex-col w-full">
       <h2 className="text-2xl pt-4 pb-8 text-center">SCAN REPORT</h2>
       <div className="grow flex flex-col justify-center">
         {/* 리포트가 준비 완료된 경우 */}
-        {didNotFollowbackWithoutException && reportUid ? (
+        {didNotFollowbackList && reportUid ? (
           <div className="flex w-full grow flex-col gap-6 items-center">
             {/* 예외 목록 */}
             <details className="w-full">
@@ -216,8 +259,8 @@ const Home = () => {
                 <Text keyword="didNotFollowBackList" />
               </summary>
               <ul className="py-12 flex flex-col xs:grid xs:grid-cols-[repeat(auto-fit,_182px)] gap-4 justify-center">
-                {didNotFollowbackWithoutException.length > 0 ? (
-                  didNotFollowbackWithoutException.map((user) => (
+                {didNotFollowbackList.length > 0 ? (
+                  didNotFollowbackList.map((user) => (
                     <UserCard
                       removeUserFromList={removeUserFromList}
                       addUserToExceptionList={addUserToExceptionList}
