@@ -12,15 +12,15 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
   },
   exceptionList: {
     ko: "예외 목록",
-    en: "Exception list",
+    en: "Exception List",
   },
   didNotFollowBackList: {
     ko: "맞팔하지 않은 사람들",
-    en: "Did not follow back list",
+    en: "People who don't follow back",
   },
   empty: {
     ko: "비어있음",
-    en: "Empty",
+    en: "EMPTY",
   },
   scanFirst: {
     ko: "확장프로그램에서 스캔을 실행하신 후 결과를 확인하실 수 있습니다.",
@@ -40,15 +40,15 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
   },
   removeFromException: {
     ko: "예외 목록에서 삭제하기",
-    en: "Remove from exception list",
+    en: "Remove From Exception List",
   },
   addToException: {
     ko: "예외 목록에 추가하기",
-    en: "Add to exception list",
+    en: "Add To Exception List",
   },
   removeFromList: {
     ko: "목록에서 삭제하기",
-    en: "Remove from list",
+    en: "Remove From List",
   },
   signInToInstagram: {
     ko: "브라우저에서 인스타그램에 로그인",
@@ -67,8 +67,8 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "Why you need to sign in: Instagram doesn't provide data to users who aren't signed in.",
   },
   notNecessarySameAccount: {
-    ko: "스캔할 계정과 로그인한 계정이 동일할 필요는 없지만 스캔에 실패하는 경우가 있을 수 있습니다.",
-    en: "The account you want to scan and the account you are signed in need not be the same, but sometimes the scan fails.",
+    ko: "스캔할 계정과 동일한 계정에 로그인하는 것을 권장합니다.",
+    en: "We recommend that you sign in to the same account you wish to scan.",
   },
   moveToTarget: {
     ko: "스캔 대상의 프로필 페이지로 이동",
@@ -79,16 +79,8 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "Go to the profile page of the user you want to scan the follow list.",
   },
   exampleOfProfilePage: {
-    ko: "(프로필 페이지 예시)",
-    en: "(Profile page example)",
-  },
-  ifSameAccount: {
-    ko: "로그인한 계정과 대상 계정이 동일한 경우",
-    en: "If the signed in account and target account are the same",
-  },
-  nextStep: {
-    ko: "다음 단계로 진행",
-    en: "Proceed to the next step",
+    ko: '(프로필 페이지 경로: "instagram.com/대상id")',
+    en: '(Profile page path: "instagram.com/targetId")',
   },
   ifDifferentAccount: {
     ko: "로그인한 계정과 스캔할 계정이 다른 경우",
@@ -119,8 +111,12 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "While the scan target page is on, click the extension icon at the top right of the browser to run “Instagram Followback Scanner”.",
   },
   waitForScanning: {
-    ko: "프로그램 창이 출력되면 스캔 시작 버튼을 누르고 기다립니다. 스캔이 완료되면 보고서가 자동으로 열립니다.",
-    en: "When the program window is displayed, press the Start Scan button and wait. scan Once completed, the report will open automatically.",
+    ko: "프로그램 창이 출력되면 스캔 시작 버튼을 누르고 기다립니다.",
+    en: "When the program window is displayed, press the Start Scan button and wait.",
+  },
+  reportOpenAutomatically: {
+    ko: "스캔이 완료되면 보고서가 자동으로 열립니다.",
+    en: "scan Once completed, the report will open automatically.",
   },
   frequentlyAsk: {
     ko: "자주 묻는 질문",
@@ -139,8 +135,8 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "If scanning does not end",
   },
   scanningNeverEndDesc: {
-    ko: "팔로워가 많을수록 스캔하는데 더 오랜 시간이 소요됩니다.",
-    en: "The more followers you have, the longer it will take to scan.",
+    ko: "팔로우가 많을수록 스캔하는데 더 오랜 시간이 소요됩니다. 잠시 기다려 주세요.",
+    en: "The more followers(or followings) you have, the longer it will take to scan. Please wait a moment.",
   },
   figureNotMatch: {
     ko: "보고서와 실제 팔로워의 숫자가 일치하지 않는 경우",
@@ -171,8 +167,8 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "Make sure you run the scan while the profile page of the account you want to scan is open.",
   },
   retryAfterFollow: {
-    ko: "그래도 안 될 경우 로그인한 계정으로 스캔할 계정을 팔로우하고 새로고침한 뒤 잠시 후 다시 시도해 주세요.",
-    en: "If that doesn't work, follow the account you want to scan with the account you're logged in with, refresh, and try again later.",
+    ko: "가능하면 스캔할 계정과 동일한 계정으로 로그인하고, 부득이한 경우 로그인한 계정에서 스캔할 계정을 팔로우해주세요.",
+    en: "If possible, sign in with the same account as the account to be scanned, and if unavoidable, follow the account to be scanned from the signed in account.",
   },
   reasonForFollow: {
     ko: "스캔할 계정을 팔로우 해야하는 이유:",
@@ -209,6 +205,94 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
   refreshAndRetry: {
     ko: "인스타그램 창을 새로고친 뒤 시간적 여유를 두고 다시 시도해 주세요.",
     en: "Please refresh the Instagram window and try again after some time.",
+  },
+  checkReport: {
+    ko: "스캔 보고서 확인하기",
+    en: "Check the scan report",
+  },
+  clickCardToProfile: {
+    ko: "목록에서 유저 카드를 클릭해 유저의 인스타그램 프로필로 이동할 수 있습니다.",
+    en: "You can click on a user's card in the list to go to the user's Instagram profile.",
+  },
+  optional: {
+    ko: "선택사항",
+    en: "optional",
+  },
+  exceptionTutorial: {
+    ko: "예외 목록에 추가하기",
+    en: "Add to exception list",
+  },
+  whatIsException: {
+    ko: "예외 목록은 해당 유저가 나를 팔로우하지 않더라도 스캔 결과에 포함하지 않을 유저의 목록입니다.",
+    en: "The exception list is a list of users that you will not include in the scan results, even if those users do not follow you.",
+  },
+  exceptionListMaintain: {
+    ko: "예외 목록은 스캔 대상마다 별도로 저장되며 검사 간에 유지됩니다.",
+    en: "Exception lists are stored separately for each scan target and are maintained between scans.",
+  },
+  howToAddException: {
+    ko: "유저 카드의 메뉴를 클릭해 해당 유저를 예외 목록에 등록/제거하거나 이번 검사 기록에서 아예 삭제할 수도 있습니다.",
+    en: "You can click the menu on the user card to register/remove the user from the exception list or delete him/her from this inspection record.",
+  },
+  notes: {
+    ko: "참고 및 유의사항",
+    en: "Notes and precautions",
+  },
+  doNotCollect: {
+    ko: "본 프로그램은 데이터를 수집하지 않습니다.",
+    en: "This program does not collect data.",
+  },
+  doNotCollectDesc: {
+    ko: "스캔 결과 등 프로그램 실행 과정에서 발생된 데이터는 모두 사용자의 로컬 환경에만 저장되며 외부로 전송되지 않습니다.",
+    en: "All data generated during program execution, such as scan results, are stored only in the user’s local environment and are not transmitted externally.",
+  },
+  deletePrevReport: {
+    ko: "스캔 실행 시 이전 스캔 결과는 영구적으로 삭제됩니다.",
+    en: "When running a scan, previous scan results will be permanently deleted.",
+  },
+  butNoException: {
+    ko: "사용자 편의를 위해 예외 유저 목록은 삭제되지 않고 다음번 스캔시 자동으로 적용됩니다.",
+    en: "For user convenience, the exception user list will not be deleted and will be automatically applied the next time you scan.",
+  },
+  programPurpose: {
+    ko: "본 프로그램은 비즈니스 통계 도출용으로 제작되었습니다.",
+    en: "This program was designed to derive business statistics.",
+  },
+  doNotSupportStatusUpdate: {
+    ko: "유저에 대한 팔로우 상태 변경(팔로우 취소 등)은 지원하지 않습니다.",
+    en: "Changing the follow status of a user (unfollow, etc.) is not supported.",
+  },
+  doNotSupportStatusUpdateDesc: {
+    ko: "원하시는 경우 목록에서 해당하는 유저를 클릭해 해당 유저의 프로필 페이지로 이동 후 직접 상태를 변경하실 수 있습니다.",
+    en: "If you wish, you can click on the relevant user in the list to go to that user's profile page and change the status directly.",
+  },
+  repeatedAndMisuse: {
+    ko: "반복적인 스캔 실행과 오남용은 금지합니다.",
+    en: "Repeated scanning and misuse are prohibited.",
+  },
+  repeatedAndMisuseDesc: {
+    ko: "Meta 가이드라인에 위배되어 제재의 대상이 될 수 있습니다.",
+    en: "You may be subject to sanctions for violating Meta's guidelines.",
+  },
+  onlyUseYourOwn: {
+    ko: "본인 소유의 계정에만 이용해주세요.",
+    en: "Please only use it on your own account.",
+  },
+  responsible: {
+    ko: "본 프로그램을 이용해 발생할 수 있는 모든 피해와 법적 책임은 사용자에게 있습니다.",
+    en: "The user is responsible for all damages and legal liability that may arise from using this program.",
+  },
+  extensionInfinityLoading: {
+    ko: "확장프로그램이 무한로딩에 걸린 경우",
+    en: "If the extension is stuck in infinite loading",
+  },
+  infinityLoadingCause: {
+    ko: "스캔이 종료되지 않은 상태에서 스캔 중인 인스타그램 페이지를 이탈할 경우 확장 프로그램이 무한 로딩에 걸리는 경우가 발생할 수 있습니다.",
+    en: "If you leave the Instagram page being scanned before the scan has finished, the extension may load infinitely.",
+  },
+  infinityLoadingSolution: {
+    ko: "이 경우 프로그램을 제거 후 재설치하면 해결되며, 가급적이면 스캔 중 페이지를 이탈하지 않도록 주의해 주세요.",
+    en: "In this case, you can resolve the issue by uninstalling and reinstalling the program. If possible, be careful not to leave the page while scanning.",
   },
 };
 

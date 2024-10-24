@@ -24,7 +24,7 @@ const LangChanger = () => {
     <select
       onChange={onLangChange}
       value={lang || "en"}
-      className="text-sm h-fit outline-none mx-2 border rounded"
+      className="text-sm h-fit outline-none mx-4 border rounded"
     >
       <option value="ko">한국어</option>
       <option value="en">English</option>

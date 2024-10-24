@@ -56,11 +56,9 @@ const Home = () => {
       } = e;
 
       if (key === "didNotFollowBack") {
-        console.table(data);
         setDidNotFollowbackList(data.didNotFollowBack || []);
         setReportUid(data.uid || "");
       } else if (key === "exceptionList") {
-        console.table(data);
         setExceptionList(data || []);
       }
     };
@@ -132,9 +130,11 @@ const Home = () => {
         ({ uid }) => uid === targetUserData.uid
       );
 
-      prev.splice(targetIndex, 1);
+      const newList = [...prev];
 
-      return prev;
+      newList.splice(targetIndex, 1);
+
+      return newList;
     });
     // 예외 목록 상태에 대상 유저 추가
     setExceptionList((prev) =>
@@ -167,11 +167,13 @@ const Home = () => {
     setExceptionList((prev) => {
       if (!prev) return [];
 
-      const targetIndex = prev.findIndex(({ uid }) => uid === targetUid);
+      const newList = [...prev];
 
-      targetUserData = prev.splice(targetIndex, 1)[0];
+      const targetIndex = newList.findIndex(({ uid }) => uid === targetUid);
 
-      return prev;
+      targetUserData = newList.splice(targetIndex, 1)[0];
+
+      return newList;
     });
 
     // 맞팔 안한 유저 상태에 대상 유저 추가
@@ -215,13 +217,6 @@ const Home = () => {
     };
   }, [startExpiredTimer]);
 
-  useEffect(() => {
-    console.log("전체 목록");
-    console.table(didNotFollowbackList);
-    console.log("예외 목록");
-    console.table(exceptionList);
-  }, [didNotFollowbackList, exceptionList]);
-
   return (
     <div className=" grow flex flex-col w-full">
       <h2 className="text-2xl pt-4 pb-8 text-center">SCAN REPORT</h2>
@@ -230,9 +225,10 @@ const Home = () => {
         {didNotFollowbackList && reportUid ? (
           <div className="flex w-full grow flex-col gap-6 items-center">
             {/* 예외 목록 */}
-            <details className="w-full">
+            <details className="w-full" open={true}>
               <summary className="w-fit cursor-pointer">
-                <Text keyword="exceptionList" />
+                <Text keyword="exceptionList" /> (
+                {exceptionList?.length.toLocaleString() || 0})
               </summary>
               <ul className="py-12 flex flex-col xs:grid xs:grid-cols-[repeat(auto-fit,_182px)] gap-4 justify-center">
                 {exceptionList && exceptionList.length > 0 ? (
@@ -247,7 +243,7 @@ const Home = () => {
                     />
                   ))
                 ) : (
-                  <div className="text-gray-500">
+                  <div className="text-gray-500 flex items-center justify-center h-[150px]">
                     <Text keyword="empty" />
                   </div>
                 )}
@@ -256,7 +252,8 @@ const Home = () => {
             {/* 맞팔 안한 목록 */}
             <details className="w-full" open={true}>
               <summary className="w-fit cursor-pointer">
-                <Text keyword="didNotFollowBackList" />
+                <Text keyword="didNotFollowBackList" /> (
+                {didNotFollowbackList.length.toLocaleString()})
               </summary>
               <ul className="py-12 flex flex-col xs:grid xs:grid-cols-[repeat(auto-fit,_182px)] gap-4 justify-center">
                 {didNotFollowbackList.length > 0 ? (
@@ -280,7 +277,7 @@ const Home = () => {
           </div>
         ) : // 스캔 기록이 없는 경우
         didNotFollowbackList ? (
-          <div>
+          <div className="text-center">
             <Text keyword="scanFirst" /> <br />
           </div>
         ) : (

@@ -24,41 +24,8 @@ const TutorialPage = () => {
               <div className="text-base break-keep pl-5">
                 <Text keyword="notNecessarySameAccount" />
               </div>
-              <br />
-              <div className="border py-4 rounded w-fit mx-5 my-0 p-5">
-                <div className="break-keep italic text-sm">
-                  <Text keyword="doNotCollectPersonalInformation" />
-                </div>
-                <div className="break-keep italic text-sm">
-                  (<Text keyword="reasonForSignIn" />)
-                </div>
-              </div>
-            </li>
-
-            <li className="p-8">
-              <h3 className="text-xl font-semibold">
-                2. <Text keyword="moveToTarget" />
-              </h3>
-              <div className="text-base break-keep pl-5">
-                <Text keyword="moveToTargetDesc" />{" "}
-                <a
-                  className="underline"
-                  href="https://instagram.com/instagram"
-                  target="_blank"
-                >
-                  <Text keyword="exampleOfProfilePage" />
-                </a>
-              </div>
               <ol className="pl-5">
-                {/* <li className="py-4">
-                  <h4 className="text-lg font-semibold">
-                    2-1. <Text keyword="ifSameAccount" />
-                  </h4>
-                  <div className="text-base break-keep pl-10">
-                    <Text keyword="nextStep" />
-                  </div>
-                </li> */}
-                <li className="py-4">
+                <li className="pt-4">
                   <h4 className="text-lg font-semibold">
                     !! <Text keyword="ifDifferentAccount" />
                   </h4>
@@ -77,6 +44,26 @@ const TutorialPage = () => {
                   </div>
                 </li>
               </ol>
+              <br />
+              <div className="border py-4 rounded w-fit mx-5 my-0 p-5">
+                <div className="break-keep italic text-sm">
+                  <Text keyword="doNotCollectPersonalInformation" />
+                </div>
+                <div className="break-keep italic text-sm">
+                  (<Text keyword="reasonForSignIn" />)
+                </div>
+              </div>
+            </li>
+
+            <li className="p-8">
+              <h3 className="text-xl font-semibold">
+                2. <Text keyword="moveToTarget" />
+              </h3>
+              <div className="text-base break-keep pl-5">
+                <Text keyword="moveToTargetDesc" />
+                <br />
+                <Text keyword="exampleOfProfilePage" />
+              </div>
             </li>
 
             <li className="p-8">
@@ -86,16 +73,45 @@ const TutorialPage = () => {
               <div className="text-base break-keep pl-5">
                 <Text keyword="scanningAtExtensionDesc" />
               </div>
-              <br />
-              <div className="text-base break-keep pl-5">
-                <Text keyword="waitForScanning" />
-              </div>
+
               <br />
               <div className="text-base break-keep pl-5">
                 <Text keyword="scanningNeverEndDesc" />
               </div>
             </li>
+
+            <li className="p-8">
+              <h3 className="text-xl font-semibold">
+                4. <Text keyword="checkReport" />
+              </h3>
+              <div className="text-base break-keep pl-5">
+                <Text keyword="reportOpenAutomatically" />
+              </div>
+              <br />
+              <div className="text-base break-keep pl-5">
+                <Text keyword="clickCardToProfile" />
+              </div>
+            </li>
+
+            <li className="p-8">
+              <h3 className="text-xl font-semibold">
+                (<Text keyword="optional" />){" "}
+                <Text keyword="exceptionTutorial" />
+              </h3>
+              <div className="text-base break-keep pl-5">
+                <Text keyword="whatIsException" />
+              </div>
+              <div className="text-base break-keep pl-5">
+                <Text keyword="exceptionListMaintain" />
+              </div>
+              <br />
+              <div className="text-base break-keep pl-5">
+                <Text keyword="howToAddException" />
+              </div>
+            </li>
           </ol>
+
+          <hr />
 
           <div className="p-4 pt-16">
             <h3 className="text-xl font-semibold">
@@ -131,14 +147,9 @@ const TutorialPage = () => {
                   2. <Text keyword="goToProfilePage" />
                 </h4>
                 <div className="text-base break-keep pl-5">
-                  <Text keyword="scanningAtTargetPage" />{" "}
-                  <a
-                    className="underline"
-                    href="https://instagram.com/instagram"
-                    target="_blank"
-                  >
-                    <Text keyword="exampleOfProfilePage" />
-                  </a>
+                  <Text keyword="scanningAtTargetPage" />
+                  <br />
+                  <Text keyword="exampleOfProfilePage" />
                 </div>
               </li>
 
@@ -203,7 +214,7 @@ const TutorialPage = () => {
 
               <li className="py-4">
                 <h4 className="text-lg font-semibold">
-                  3. <Text keyword="figureNotMatch" />
+                  7. <Text keyword="figureNotMatch" />
                 </h4>
                 <div className="text-base break-keep pl-5">
                   <Text keyword="figureNotMatchDesc" />
@@ -212,11 +223,83 @@ const TutorialPage = () => {
 
               <li className="py-4">
                 <h4 className="text-lg font-semibold">
-                  7. <Text keyword="emptyList" />
+                  8. <Text keyword="emptyList" />
                 </h4>
                 <div className="text-base break-keep pl-5">
                   <Text keyword="emptyListDesc" />
                 </div>
+              </li>
+
+              <li className="py-4">
+                <h4 className="text-lg font-semibold">
+                  9. <Text keyword="extensionInfinityLoading" />
+                </h4>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="infinityLoadingCause" />
+                </div>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="infinityLoadingSolution" />
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <hr />
+
+          <div className="p-4 pt-16">
+            <h3 className="text-xl font-semibold">
+              <Text keyword="notes" />
+            </h3>
+            <ol className="pl-5">
+              <li id="failed-to-find-user" className="py-4">
+                <h4 className="text-lg font-semibold">
+                  1. <Text keyword="doNotCollect" />
+                </h4>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="doNotCollectDesc" />
+                </div>
+              </li>
+              <li id="failed-to-find-user" className="py-4">
+                <h4 className="text-lg font-semibold">
+                  2. <Text keyword="deletePrevReport" />
+                </h4>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="butNoException" />
+                </div>
+              </li>
+              <li id="failed-to-find-user" className="py-4">
+                <h4 className="text-lg font-semibold">
+                  3. <Text keyword="programPurpose" />
+                </h4>
+              </li>
+              <li id="failed-to-find-user" className="py-4">
+                <h4 className="text-lg font-semibold">
+                  4. <Text keyword="doNotSupportStatusUpdate" />
+                </h4>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="doNotSupportStatusUpdateDesc" />
+                </div>
+              </li>
+
+              <li id="failed-to-find-user" className="py-4">
+                <h4 className="text-lg font-semibold">
+                  5. <Text keyword="repeatedAndMisuse" />
+                </h4>
+                <div className="text-base break-keep pl-5">
+                  <Text keyword="repeatedAndMisuseDesc" />
+                </div>
+              </li>
+
+              <li id="failed-to-find-user" className="py-4">
+                <h4 className="text-lg font-semibold">
+                  6. <Text keyword="onlyUseYourOwn" />
+                </h4>
+              </li>
+
+              <li id="failed-to-find-user" className="py-4">
+                <h4 className="text-lg font-semibold">
+                  7. <Text keyword="responsible" />
+                </h4>
               </li>
             </ol>
           </div>

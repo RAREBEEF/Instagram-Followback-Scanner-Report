@@ -36,6 +36,7 @@ const LayoutFooter = () => {
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           target="_blank"
+          href="https://chromewebstore.google.com/detail/ioapdbeebenampepgjabpjinndcoagcf"
           rel="noopener noreferrer"
         >
           <Image

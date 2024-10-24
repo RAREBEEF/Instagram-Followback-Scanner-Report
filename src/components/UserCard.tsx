@@ -46,7 +46,10 @@ const UserCard = ({
   };
 
   return (
-    <li key={uid} className="relative p-4 border rounded overflow-hidden">
+    <li
+      key={uid}
+      className="relative text-balance p-4 border rounded overflow-hidden"
+    >
       <button
         onClick={toggleCardFrontBack}
         className="group absolute w-5 h-5 right-3 top-2 z-30"
