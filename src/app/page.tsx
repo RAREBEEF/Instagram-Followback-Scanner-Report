@@ -230,7 +230,7 @@ const Home = () => {
                 <Text keyword="exceptionList" /> (
                 {exceptionList?.length.toLocaleString() || 0})
               </summary>
-              <ul className="py-12 flex flex-col xs:grid xs:grid-cols-[repeat(auto-fit,_182px)] gap-4 justify-center">
+              <ul className="py-12 flex flex-col xs:grid xs:grid-cols-[repeat(auto-fill,_182px)] gap-4 justify-center">
                 {exceptionList && exceptionList.length > 0 ? (
                   exceptionList.map((user) => (
                     <UserCard
@@ -255,7 +255,7 @@ const Home = () => {
                 <Text keyword="didNotFollowBackList" /> (
                 {didNotFollowbackList.length.toLocaleString()})
               </summary>
-              <ul className="py-12 flex flex-col xs:grid xs:grid-cols-[repeat(auto-fit,_182px)] gap-4 justify-center">
+              <ul className="py-12 flex flex-col xs:grid xs:grid-cols-[repeat(auto-fill,_182px)] gap-4 justify-center">
                 {didNotFollowbackList.length > 0 ? (
                   didNotFollowbackList.map((user) => (
                     <UserCard
