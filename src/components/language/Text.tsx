@@ -39,11 +39,11 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "Loading",
   },
   removeFromException: {
-    ko: "예외 목록에서 삭제하기",
+    ko: "예외 목록에서 삭제",
     en: "Remove From Exception List",
   },
   addToException: {
-    ko: "예외 목록에 추가하기",
+    ko: "예외 목록에 추가",
     en: "Add To Exception List",
   },
   removeFromList: {
@@ -294,12 +294,36 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     ko: "이 경우 프로그램을 제거 후 재설치하면 해결되며, 가급적이면 스캔 중 페이지를 이탈하지 않도록 주의해 주세요.",
     en: "In this case, you can resolve the issue by uninstalling and reinstalling the program. If possible, be careful not to leave the page while scanning.",
   },
+  unfollower: {
+    ko: "언팔로우 목록",
+    en: "Unfollow List",
+  },
+  unfollowerDesc: {
+    ko: "이전 스캔 시점을 기준으로 팔로우를 취소한 유저의 목록입니다. 스캔 실행 시 목록이 새로고침됩니다.",
+    en: "This is the list of users who have been unfollowed as of the previous scan point. The list will be refreshed when you run the scan.",
+  },
+  exceptionListDesc: {
+    ko: "맞팔하지 않은 사람들에서 제외할 유저의 목록입니다.",
+    en: "This is a list of people who will not be included in the list of People who don't follow back.",
+  },
+  goToStore: {
+    ko: "크롬 웹스토어로 이동하기",
+    en: "Go to Chrome Web Store",
+  },
+  scannedAt: {
+    ko: "스캔일시",
+    en: "Scanned At",
+  },
+  deleteReport: {
+    ko: "현재 검사 결과 삭제",
+    en: "Delete This Scan Report",
+  },
 };
 
 const Text = ({ keyword }: { keyword: string }) => {
   const { lang } = useContext(LanguageContext);
 
-  return lang ? TextDictionary[keyword]?.[lang] || null : null;
+  return lang ? TextDictionary[keyword]?.[lang] || keyword : null;
 };
 
 export default Text;
