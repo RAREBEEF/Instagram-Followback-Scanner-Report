@@ -67,8 +67,8 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "Why you need to sign in: Instagram doesn't provide data to users who aren't signed in.",
   },
   notNecessarySameAccount: {
-    ko: "스캔할 계정과 동일한 계정에 로그인하는 것을 권장합니다.",
-    en: "We recommend that you sign in to the same account you wish to scan.",
+    ko: "아래의 이유로 스캔할 계정과 동일한 계정에 로그인하는 것을 권장합니다.",
+    en: "For the reasons below, we recommend that you sign in to the same account you will be scanning from.",
   },
   moveToTarget: {
     ko: "스캔 대상의 프로필 페이지로 이동",
@@ -87,16 +87,20 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "If the signed in account is different from the account to be scanned",
   },
   mayFail: {
-    ko: "아래의 경우 스캔에 실패할 수 있습니다.",
-    en: "The scan may fail in the following cases.",
+    ko: "다음과 같은 계정은 스캔에 실패할 수 있습니다:",
+    en: "The following accounts may fail the scan:",
   },
   ifPrivateAccount: {
-    ko: "대상 계정이 비공개인 경우",
-    en: "The target account is private",
+    ko: "로그인한 계정과 스캔할 계정이 다르고, 스캔할 계정이 비공개인 경우.",
+    en: "If the signed in account and the account to be scanned are different, and the account to be scanned is private.",
   },
   ifNotFollowing: {
-    ko: "로그인한 계정이 대상 계정을 팔로우하지 않는 경우",
-    en: "The signed in account does not follow the target account",
+    ko: "로그인한 계정과 스캔할 계정이 다르고, 스캔할 계정을 팔로우하지 않는 경우.",
+    en: "If the signed in account and the account to be scanned are different, and you do not follow the account to be scanned.",
+  },
+  unableToSearch: {
+    ko: "아이디에 검색 불가능한 키워드가 포함된 경우.",
+    en: "If the ID contains keywords that cannot be searched.",
   },
   checkFrequently1: {
     ko: "자주 묻는 질문 1번 참고",
@@ -317,6 +321,10 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
   deleteReport: {
     ko: "현재 검사 결과 삭제",
     en: "Delete This Scan Report",
+  },
+  checkUsername: {
+    ko: "Meta 가이드라인에 위배되는 키워드가 포함된 아이디는 검색이 불가능하고 스캔에 실패합니다. 인스타그램 검색창에서 해당 유저의 아이디가 검색되는지 확인해 주세요.",
+    en: "IDs containing keywords that violate the Meta guidelines are not searchable and the scan will fail. Please check if the user's ID can be found in the Instagram search bar.",
   },
 };
 

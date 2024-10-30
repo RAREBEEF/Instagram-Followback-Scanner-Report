@@ -19,6 +19,16 @@ const LayoutFooter = () => {
           Tutorial
         </a>
         <a
+          className="group flex items-center gap-2"
+          href="/questions"
+          rel="noopener noreferrer"
+        >
+          ?
+          <span className="group-hover:underline hover:underline-offset-4">
+            Frequently Asked Questions
+          </span>
+        </a>
+        <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://rarebeef.co.kr/"
           target="_blank"
@@ -46,7 +56,7 @@ const LayoutFooter = () => {
             width={16}
             height={16}
           />
-          Write a review →
+          Write a review
         </a>
       </div>
       <div className="text-sm">© 2024. RAREBEEF All Rights Reserved.</div>
