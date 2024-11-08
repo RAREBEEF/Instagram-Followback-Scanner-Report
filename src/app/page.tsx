@@ -361,7 +361,8 @@ const Home = () => {
                 )
               </summary>
               <p className="text-sm text-[gray] ml-4">
-                <Text keyword="unfollowerDesc" />
+                <Text keyword="unfollowerDesc" /> <br />
+                <Text keyword="unfollowerDesc2" />
               </p>
 
               {Array.isArray(scanReportList[reportUid].unfollower) &&
