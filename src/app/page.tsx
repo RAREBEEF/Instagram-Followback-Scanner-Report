@@ -50,13 +50,13 @@ const Home = () => {
         data: { key, data },
       } = e;
 
-      console.log(key);
+      // console.log(key);
 
       if (key === "scanReportList") {
-        console.log(data);
+        // console.log(data);
         setScanReportList(data || {});
       } else if (key === "exceptionList") {
-        console.log(data);
+        // console.log(data);
         setExceptionList(data || []);
       }
     };
@@ -95,7 +95,7 @@ const Home = () => {
     )
       return;
 
-    console.log(scanReportList);
+    // console.log(scanReportList);
 
     // 스캔 시점 내림차순 정렬
     const reportsArr = Object.values(scanReportList);
@@ -108,6 +108,9 @@ const Home = () => {
 
   // 선택한 보고서가 변경되면 해당 보고서 출력 준비
   const onReportChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    // if (scanReportList) {
+    //   console.log(scanReportList[e.target.value]);
+    // }
     setReportUid(e.target.value);
   };
 
