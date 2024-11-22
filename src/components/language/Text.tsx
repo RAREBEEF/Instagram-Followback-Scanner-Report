@@ -303,12 +303,12 @@ const TextDictionary: { [keyword in string]: { ko: string; en: string } } = {
     en: "Unfollow List",
   },
   unfollowerDesc: {
-    ko: "이전 스캔 시점을 기준으로 팔로우를 취소한 유저의 목록입니다. 스캔 실행 시 목록이 새로고침됩니다.",
+    ko: "이전 스캔 시점을 기준으로 팔로우가 취소된 유저의 목록입니다. 스캔 실행 시 목록이 새로고침됩니다.",
     en: "This is the list of users who have been unfollowed as of the previous scan point. The list will be refreshed when you run the scan.",
   },
   unfollowerDesc2: {
-    ko: "해당 유저의 계정이 삭제되는 등의 변동이 생긴 경우도 여기에 포함될 수 있습니다.",
-    en: "This may also include cases where the user's account has changed, such as being deleted.",
+    ko: "해당 유저의 계정이 삭제되거나 비활성화 된 경우도 포함될 수 있습니다.",
+    en: "This may also include cases where the user's account has been deleted or deactivated.",
   },
   exceptionListDesc: {
     ko: "맞팔하지 않은 사람들에서 제외할 유저의 목록입니다.",
